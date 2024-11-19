@@ -66,7 +66,9 @@ export default function HomePage() {
                 variant="outline"
                 className="border-red-200 hover:bg-red-50 text-red-600 text-lg px-8 py-6"
               >
-                View Demo
+                <Link href={'/demo'}>
+                  View Demo
+                </Link>
               </Button>
             </div>
 
