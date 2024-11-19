@@ -59,7 +59,7 @@ export default function HomePage() {
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Button className="bg-red-600 hover:bg-red-700 text-lg px-8 py-6">
                 <Link href={'/generate'}>
-                  Create Your Poem & Send It Now!
+                  Send It Now!
                 </Link>
               </Button>
               <Button
@@ -72,17 +72,23 @@ export default function HomePage() {
               </Button>
             </div>
 
+
             <div className="mt-12 flex items-center justify-center gap-2">
               <div className="flex -space-x-2">
-                {[1, 2, 3].map((i) => (
-                  <div
+                {['/guy1.jpeg', '/guy2.jpeg', '/guy3.jpeg'].map((i) => (
+                  <Image
                     key={i}
+                    src={`${i}`}
+                    alt=""
+                    width={24}
+                    height={24}
                     className="w-8 h-8 rounded-full bg-red-200 border-2 border-white"
+                    priority
                   />
                 ))}
               </div>
-              <p className="text-sm text-gray-600">
-                Loved by thousands of customers worldwide
+              <p className="-mt-0.5 text-sm font-normal text-[#474368]"><span className="hidden md:inline-flex font-bold">20,983</span> <span className="hidden md:inline-flex"> envelops created for</span> <span className="font-bold">10,245+ </span>
+                happy customers
               </p>
             </div>
           </div>
