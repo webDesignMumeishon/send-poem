@@ -36,10 +36,10 @@ export default function GeneratePage() {
     }
 
     return (
-        <div className="min-h-screen bg-gradient-to-b from-pink-50 to-red-50 py-10 px-4">
-            <Card className="max-w-2xl mx-auto border-red-100 shadow-lg">
-                <CardHeader className="bg-red-500 text-white rounded-t-lg">
-                    <CardTitle className="text-2xl font-bold">Welcome to AIPoemGenerator</CardTitle>
+        <div className="min-h-screen ">
+            <Card className="max-w-2xl mx-auto bg-inherit shadow-none border-none" style={{}}>
+                <CardHeader className=" text-white">
+                    <CardTitle className="text-red-500 text-2xl font-bold">Welcome to AIPoemGenerator</CardTitle>
                 </CardHeader>
                 <CardContent className="pt-6">
                     <Tabs value={`step${step}`} className="w-full">
