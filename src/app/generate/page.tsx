@@ -37,7 +37,7 @@ export default function GeneratePage() {
 
     return (
         <div className="min-h-screen ">
-            <Card className="max-w-2xl mx-auto bg-inherit shadow-none border-none" style={{}}>
+            <Card className="max-w-2xl mx-auto bg-inherit shadow-none border-none">
                 <CardHeader className=" text-white">
                     <CardTitle className="text-red-500 text-2xl font-bold">Welcome to PoemPost</CardTitle>
                 </CardHeader>
@@ -69,7 +69,7 @@ export default function GeneratePage() {
                         <TabsContent value="step1">
                             <form onSubmit={(e) => { e.preventDefault(); generatePoem(); }} className="space-y-4">
                                 <div>
-                                    <Label htmlFor="recipientName" className="text-red-700">Recipient's Name</Label>
+                                    <Label htmlFor="recipientName" className="text-red-700">Recipient&apos;s Name</Label>
                                     <Input
                                         id="recipientName"
                                         name="recipientName"

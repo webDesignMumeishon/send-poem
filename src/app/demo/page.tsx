@@ -1,6 +1,6 @@
 // app/page.tsx
 import Envelop from '@/components/Envelop';
-import { Metadata } from 'next';
+// import { Metadata } from 'next';
 
 // export const metadata: Metadata = {
 //     title: 'Home Page',

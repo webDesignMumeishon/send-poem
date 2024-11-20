@@ -1,9 +1,8 @@
 "use client"
 import { Button } from "@/components/ui/button"
-import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from "@/components/ui/dialog"
 import Image from "next/image"
 import Link from "next/link"
-import { Heart, Mail, Link as LinkIcon, CheckCircle, X } from 'lucide-react'
+import { Heart, CheckCircle, X } from 'lucide-react'
 import { Card, CardContent } from "@/components/ui/card"
 import { useState } from "react"
 
@@ -24,8 +23,17 @@ export default function HomePage() {
   return (
     <div className="min-h-screen bg-gradient-to-b from-pink-50 to-red-50">
       <header className="fixed top-0 w-full bg-white/80 backdrop-blur-sm z-50">
-        <nav className="container mx-auto px-4 h-16 flex items-center justify-between">
-          <Link href="#" className="text-2xl font-bold text-red-600">PoemPost</Link>
+        <nav className="container mx-auto px-2 h-16 md:h-24 flex items-center justify-between">
+          <Link href="#" className="text-2xl font-bold text-red-600">
+            <Image
+              src="/poempost-icon.png"
+              alt="icon"
+              className="w-[35%] md:w-[50%]"
+              width={150}
+              height={80}
+              priority
+            />
+          </Link>
         </nav>
       </header>
 
@@ -97,7 +105,7 @@ export default function HomePage() {
 
 
       {/* Pain Points */}
-      <section className="py-16 bg-white">
+      {/* <section className="py-16 bg-white">
         <div className="container mx-auto px-4">
           <h2 className="text-3xl font-bold text-center text-red-800 mb-12">
             Struggling to Express Your Heartfelt Emotions? Let Us Help!
@@ -123,12 +131,12 @@ export default function HomePage() {
             </Card>
           </div>
         </div>
-      </section>
+      </section> */}
 
 
 
       {/* Key Features & Benefits */}
-      <section id="features" className="py-16">
+      {/* <section id="features" className="py-16">
         <div className="container mx-auto px-4">
           <h2 className="text-3xl font-bold text-center text-red-800 mb-12">
             Why Our AI Love Poem Generator & Digital Envelope Will Win Their Heart
@@ -150,7 +158,7 @@ export default function HomePage() {
             ))}
           </div>
         </div>
-      </section>
+      </section> */}
 
       {/* How It Works */}
       <section id="how-it-works" className="py-16 bg-white">
@@ -186,7 +194,7 @@ export default function HomePage() {
           <div className="max-w-2xl mx-auto">
             <Card className="bg-white border-red-100">
               <CardContent className="p-8">
-                <p className="text-lg text-red-600 mb-4 italic">"{testimonials[activeTestimonial].quote}"</p>
+                <p className="text-lg text-red-600 mb-4 italic">&quot;{testimonials[activeTestimonial].quote}&quot;</p>
                 <p className="text-red-700 font-semibold">- {testimonials[activeTestimonial].author}</p>
               </CardContent>
             </Card>

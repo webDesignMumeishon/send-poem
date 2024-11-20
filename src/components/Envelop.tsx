@@ -1,10 +1,10 @@
 "use client"
-import React, { use, useState } from 'react'
+import React, { useState } from 'react'
 import './style.css'
 
 type Props = {
     name: string;
-    content: any;
+    content: string | TrustedHTML;
 }
 
 const Envelop = ({ name, content }: Props) => {
@@ -25,7 +25,7 @@ const Envelop = ({ name, content }: Props) => {
                                 <strong>{name},</strong>
                                 <div>
                                     {
-                                        open && content
+                                        open && <>{content}</>
                                     }
                                 </div>
                             </div>
