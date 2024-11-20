@@ -25,7 +25,7 @@ export default function HomePage() {
     <div className="min-h-screen bg-gradient-to-b from-pink-50 to-red-50">
       <header className="fixed top-0 w-full bg-white/80 backdrop-blur-sm z-50">
         <nav className="container mx-auto px-4 h-16 flex items-center justify-between">
-          <Link href="#" className="text-2xl font-bold text-red-600">LoveLetter</Link>
+          <Link href="#" className="text-2xl font-bold text-red-600">PoemPost</Link>
         </nav>
       </header>
 

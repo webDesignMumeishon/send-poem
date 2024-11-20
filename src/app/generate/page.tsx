@@ -39,7 +39,7 @@ export default function GeneratePage() {
         <div className="min-h-screen ">
             <Card className="max-w-2xl mx-auto bg-inherit shadow-none border-none" style={{}}>
                 <CardHeader className=" text-white">
-                    <CardTitle className="text-red-500 text-2xl font-bold">Welcome to AIPoemGenerator</CardTitle>
+                    <CardTitle className="text-red-500 text-2xl font-bold">Welcome to PoemPost</CardTitle>
                 </CardHeader>
                 <CardContent className="pt-6">
                     <Tabs value={`step${step}`} className="w-full">

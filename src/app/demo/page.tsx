@@ -1,4 +1,5 @@
 // app/page.tsx
+import Envelop from '@/components/Envelop';
 import { Metadata } from 'next';
 
 // export const metadata: Metadata = {
@@ -21,12 +22,23 @@ import { Metadata } from 'next';
 // };
 
 export default function DemoPage() {
+    const poem = `
+        In every dawn, your name I hear, <br />
+        A whispered song, so pure, so clear. <br />
+        Your eyes, a glow like stars above, <br />
+        Illuminate the world with love. <br />
+
+        The wind that whispers through the trees, <br />
+        Carries your voice, a gentle breeze. <br />
+        In every step, in every smile, <br />
+        You make the journey so worthwhile. <br />
+
+        Maria, in your heart I find, <br />
+        A peace that soothes, a love that binds. <br />
+        With you, my world is ever bright, <br />
+        For you are my day, my moon, my night.
+    `;
     return (
-        <main className="container mx-auto px-4 py-8">
-            <h1 className="text-3xl font-bold text-center">Welcome to Next.js</h1>
-            <p className="text-lg text-gray-600 text-center mt-4">
-                Build powerful applications with Next.js and TypeScript.
-            </p>
-        </main>
+        <Envelop name={'Maria'} content={<p className='text-slate-700' dangerouslySetInnerHTML={{ __html: poem }} />} />
     );
 }
