@@ -7,9 +7,12 @@ import { Textarea } from "@/components/ui/textarea"
 import { Label } from "@/components/ui/label"
 import { Card, CardContent, CardFooter, CardHeader, CardTitle } from "@/components/ui/card"
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
+import { generateAiPoem } from '../actions/poem'
+import { Preview } from '@/components/Preview'
 
 export default function GeneratePage() {
     const [step, setStep] = useState(1)
+    const [loading, setLoading] = useState(false)
     const [inputs, setInputs] = useState({
         recipientName: '',
         occasion: '',
@@ -22,11 +25,18 @@ export default function GeneratePage() {
         setInputs({ ...inputs, [e.target.name]: e.target.value })
     }
 
-    const generatePoem = () => {
-        // Simulating AI poem generation
-        const poem = `Dear ${inputs.recipientName},\n\nOn this ${inputs.occasion} so bright,\nYour presence fills my heart with light.\n${inputs.additionalInfo}\nWith love that's ${inputs.tone} and true,\nThis poem I dedicate to you.`
-        setGeneratedPoem(poem)
-        setStep(2)
+    const generatePoem = async () => {
+        setLoading(true)
+        try {
+            const { poemRaw, poemBreakLine } = await generateAiPoem(inputs.recipientName)
+            setGeneratedPoem(`${poemRaw}`)
+            setLoading(false)
+            setStep(2)
+        } catch (error) {
+            setLoading(false)
+            alert(JSON.stringify(error))
+        }
+
     }
 
     const handleCheckout = () => {
@@ -34,6 +44,9 @@ export default function GeneratePage() {
         alert('Proceeding to checkout...')
         setStep(3)
     }
+
+    console.log(generatedPoem)
+
 
     return (
         <div className="min-h-screen ">
@@ -81,35 +94,35 @@ export default function GeneratePage() {
                                 </div>
                                 <div>
                                     <Label htmlFor="occasion" className="text-red-700">Occasion</Label>
-                                    <Input
+                                    {/* <Input
                                         id="occasion"
                                         name="occasion"
                                         value={inputs.occasion}
                                         onChange={handleInputChange}
                                         required
                                         className="border-red-200 focus:ring-red-500 focus:border-red-500"
-                                    />
+                                    /> */}
                                 </div>
                                 <div>
                                     <Label htmlFor="tone" className="text-red-700">Desired Tone</Label>
-                                    <Input
+                                    {/* <Input
                                         id="tone"
                                         name="tone"
                                         value={inputs.tone}
                                         onChange={handleInputChange}
                                         required
                                         className="border-red-200 focus:ring-red-500 focus:border-red-500"
-                                    />
+                                    /> */}
                                 </div>
                                 <div>
                                     <Label htmlFor="additionalInfo" className="text-red-700">Additional Information</Label>
-                                    <Textarea
+                                    {/* <Textarea
                                         id="additionalInfo"
                                         name="additionalInfo"
                                         value={inputs.additionalInfo}
                                         onChange={handleInputChange}
                                         className="border-red-200 focus:ring-red-500 focus:border-red-500"
-                                    />
+                                    /> */}
                                 </div>
                                 <Button type="submit" className="w-full bg-red-500 hover:bg-red-600 text-white">
                                     Generate Poem
@@ -119,10 +132,12 @@ export default function GeneratePage() {
                         <TabsContent value="step2">
                             <div className="space-y-4">
                                 <Textarea
+                                    // value={generatedPoem.replace(/\\n/g, "\n")}
                                     value={generatedPoem}
-                                    readOnly
                                     className="min-h-[200px] border-red-200 focus:ring-red-500 focus:border-red-500"
+                                    onChange={(e) => setGeneratedPoem(e.target.value)}
                                 />
+                                <Preview poemPreview={generatedPoem} />
                                 <Button onClick={handleCheckout} className="w-full bg-red-500 hover:bg-red-600 text-white">
                                     Proceed to Checkout
                                 </Button>

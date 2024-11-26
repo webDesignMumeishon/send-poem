@@ -28,9 +28,9 @@ export default function HomePage() {
             <Image
               src="/poempost-icon.png"
               alt="icon"
-              className="w-[35%] md:w-[50%]"
-              width={150}
-              height={80}
+              className="w-[40%] md:w-[50%]"
+              width={200}
+              height={150}
               priority
             />
           </Link>
@@ -56,7 +56,7 @@ export default function HomePage() {
               <span className="text-sm font-medium">Express Your Love</span>
             </div>
 
-            <h1 className="text-4xl md:text-6xl font-bold text-gray-900">
+            <h1 className="text-4xl md:text-6xl font-bold text-brand-2">
               Express Your Love with AI-Powered Poems & Beautiful Digital Envelopes
             </h1>
 
@@ -65,14 +65,14 @@ export default function HomePage() {
             </p>
 
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Button className="bg-red-600 hover:bg-red-700 text-lg px-8 py-6">
+              <Button className="bg-brand-2 hover:bg-red-700 text-lg px-8 py-6">
                 <Link href={'/generate'}>
                   Send It Now!
                 </Link>
               </Button>
               <Button
                 variant="outline"
-                className="border-red-200 hover:bg-red-50 text-red-600 text-lg px-8 py-6"
+                className="border-red-200 hover:bg-red-50 text-brand-2 text-lg px-8 py-6"
               >
                 <Link href={'/demo'}>
                   View Demo
@@ -163,7 +163,7 @@ export default function HomePage() {
       {/* How It Works */}
       <section id="how-it-works" className="py-16 bg-white">
         <div className="container mx-auto px-4">
-          <h2 className="text-3xl font-bold text-center text-red-800 mb-12">
+          <h2 className="text-3xl font-bold text-center text-brand-2 mb-12">
             Create, Personalize, & Send Your Love Letter in 3 Simple Steps
           </h2>
           <div className="grid md:grid-cols-3 gap-8">
@@ -173,11 +173,11 @@ export default function HomePage() {
               { title: "Send It Off", description: "Deliver your heartfelt message in seconds with the unique digital envelope!" }
             ].map((step, index) => (
               <div key={index} className="text-center">
-                <div className="w-16 h-16 bg-red-600 text-white rounded-full flex items-center justify-center text-2xl font-bold mx-auto mb-4">
+                <div className="w-16 h-16 bg-brand-2 text-white rounded-full flex items-center justify-center text-2xl font-bold mx-auto mb-4">
                   {index + 1}
                 </div>
-                <h3 className="text-xl font-semibold text-red-700 mb-4">{step.title}</h3>
-                <p className="text-red-600">{step.description}</p>
+                <h3 className="text-xl font-semibold text-brand-2 mb-4">{step.title}</h3>
+                <p className="text-brand-2">{step.description}</p>
               </div>
             ))}
           </div>
@@ -258,7 +258,7 @@ export default function HomePage() {
       </section>
 
       {/* Closing Section */}
-      <section className="py-20 text-center">
+      {/* <section className="py-20 text-center">
         <div className="container mx-auto px-4">
           <h2 className="text-3xl md:text-4xl font-bold text-red-800 mb-6">
             Transform Your Emotions into Words & Art with Our AI Love Poem Generator
@@ -270,7 +270,7 @@ export default function HomePage() {
             Make every occasion unforgettable with a personalized poem and digital envelope, crafted in minutes.
           </p>
         </div>
-      </section>
+      </section> */}
     </div>
   )
 }
