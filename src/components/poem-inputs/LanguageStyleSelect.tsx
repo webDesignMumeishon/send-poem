@@ -7,19 +7,21 @@ import {
 } from "@/components/ui/select"
 import LabelInput from "../LabelInput";
 
-const LanguageStyleSelect = () => {
-    const handleChange = (value: any) => {
-        console.log("Selected language/style:", value);
-    };
+type Props = {
+    id: string
+    handleSelectChange: (field: string, value: string) => void
+}
+
+const LanguageStyleSelect = ({ handleSelectChange, id }: Props) => {
 
     return (
         <div>
-            <LabelInput inputId="language-style">
+            <LabelInput inputId={id}>
                 Select Language/Style Preference
             </LabelInput>
-            <Select onValueChange={handleChange}>
-                <SelectTrigger id="language-style" className="w-full mt-2">
-                    <span>Select a style</span>
+            <Select onValueChange={(value) => handleSelectChange(id, value)}>
+                <SelectTrigger id={id} className="w-full mt-2">
+                    <SelectValue placeholder="Select a style" />
                 </SelectTrigger>
                 <SelectContent>
                     <SelectItem value="modern">Modern</SelectItem>

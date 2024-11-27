@@ -21,7 +21,7 @@ export function Preview({ poemPreview }: Props) {
     return (
         <Dialog>
             <DialogTrigger asChild>
-                <Button variant="outline" className="w-full border-red-200 text-red-600 hover:bg-red-50">Preview</Button>
+                <Button variant="outline" className="w-full border-brand-2 text-brand-2 hover:bg-red-50">Preview</Button>
             </DialogTrigger>
             <DialogContent className="w-full h-full p-0">
                 <DialogTitle>

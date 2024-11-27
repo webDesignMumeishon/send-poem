@@ -7,20 +7,21 @@ import {
 } from "@/components/ui/select"
 import LabelInput from "../LabelInput";
 
-const ToneMoodSelect = () => {
-    const handleChange = (value: any) => {
-        console.log("Selected tone/mood:", value);
-        // Use this value in your poem generation logic
-    };
+type Props = {
+    id: string
+    handleSelectChange: (field: string, value: string) => void
+}
+
+const ToneMoodSelect = ({ handleSelectChange, id }: Props) => {
 
     return (
         <div className="w-full">
             <LabelInput inputId="tone-mood">
                 Select Tone/Mood of the Poem
             </LabelInput>
-            <Select onValueChange={handleChange}>
+            <Select onValueChange={(value) => handleSelectChange(id, value)} >
                 <SelectTrigger id="tone-mood" className="w-full mt-2">
-                    <span>Select a tone/mood</span>
+                    <SelectValue placeholder="Select a tone/mood" />
                 </SelectTrigger>
                 <SelectContent>
                     <SelectItem value="romantic">Romantic</SelectItem>

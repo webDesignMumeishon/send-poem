@@ -2,17 +2,22 @@ import React from 'react'
 import LabelInput from '../LabelInput'
 import { Input } from '../ui/input'
 
-const NameInput = () => {
+type Props = {
+    value: string
+    handleInputChange: any
+}
+
+const NameInput = ({ value, handleInputChange }: Props) => {
     return (
         <div>
             <LabelInput inputId="name">Recipient&apos;s Name</LabelInput>
             <Input
                 id="name"
                 name="name"
-                // value={inputs.occasion}
-                // onChange={handleInputChange}
+                value={value}
+                onChange={handleInputChange}
                 required
-                className="border-red-200 focus:ring-red-500 focus:border-red-500 mt-2"
+                className="border-brand-2 mt-2"
             />
         </div>
     )

@@ -3,16 +3,22 @@ import React from 'react'
 import LabelInput from '../LabelInput'
 import { Textarea } from '../ui/textarea'
 
-const AdditionalInfoTextarea = () => {
+type Props = {
+    id: string
+    value: string
+    handleInputChange: any
+}
+
+const AdditionalInfoTextarea = ({ value, handleInputChange, id }: Props) => {
     return (
         <div>
-            <LabelInput inputId="additional-info" >Additional Information</LabelInput>
+            <LabelInput inputId={id} >Additional Information</LabelInput>
             <Textarea
-                id="additional-info"
-                name="additionalInfo"
-                // value={inputs.additionalInfo}
-                // onChange={handleInputChange}
-                className="border-red-200 focus:ring-red-500 focus:border-red-500 mt-2"
+                id={id}
+                name={id}
+                value={value}
+                onChange={handleInputChange}
+                className="border-brand-2 mt-2"
             />
         </div>
     )

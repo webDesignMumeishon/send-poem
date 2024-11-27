@@ -16,14 +16,23 @@ import AdditionalInfoTextarea from '@/components/poem-inputs/AdditionalInfoTexta
 import NameInput from '@/components/poem-inputs/NameInput'
 import Link from "next/link"
 
+export interface PoemFields {
+    name: string;       // Name or title of the content
+    style: string;      // Style of the content (e.g., formal, casual, artistic, etc.)
+    audience: string;   // Target audience for the content
+    tone: string;       // Tone of the content (e.g., humorous, serious, persuasive, etc.)
+    additional: string; // Any additional details or context
+}
+
 export default function GeneratePage() {
     const [step, setStep] = useState(1)
     const [loading, setLoading] = useState(false)
-    const [inputs, setInputs] = useState({
-        recipientName: '',
-        occasion: '',
+    const [inputs, setInputs] = useState<PoemFields>({
+        name: '',
+        style: '',
+        audience: '',
         tone: '',
-        additionalInfo: ''
+        additional: ''
     })
     const [generatedPoem, setGeneratedPoem] = useState('')
 
@@ -31,10 +40,14 @@ export default function GeneratePage() {
         setInputs({ ...inputs, [e.target.name]: e.target.value })
     }
 
+    const handleSelectChange = (field: string, value: string) => {
+        setInputs({ ...inputs, [field]: value })
+    }
+
     const generatePoem = async () => {
         setLoading(true)
         try {
-            const { poemRaw, poemBreakLine } = await generateAiPoem(inputs.recipientName)
+            const poemRaw= await generateAiPoem(inputs)
             setGeneratedPoem(`${poemRaw}`)
             setLoading(false)
             setStep(2)
@@ -49,6 +62,8 @@ export default function GeneratePage() {
         alert('Proceeding to checkout...')
         setStep(3)
     }
+
+    console.log(inputs)
 
     return (
         <div className="min-h-screen ">
@@ -93,11 +108,11 @@ export default function GeneratePage() {
                         </TabsList>
                         <TabsContent value="step1">
                             <form onSubmit={(e) => { e.preventDefault(); generatePoem(); }} className="space-y-4">
-                                <NameInput />
-                                <LanguageStyleSelect />
-                                <PoemAudienceSelect />
-                                <ToneMoodSelect />
-                                <AdditionalInfoTextarea />
+                                <NameInput value={inputs.name} handleInputChange={handleInputChange} />
+                                <LanguageStyleSelect id="style" handleSelectChange={handleSelectChange} />
+                                <PoemAudienceSelect id="audience" handleSelectChange={handleSelectChange} />
+                                <ToneMoodSelect id="tone" handleSelectChange={handleSelectChange} />
+                                <AdditionalInfoTextarea id={'additional'} value={inputs.additional} handleInputChange={handleInputChange} />
                                 <Button type="submit" className="w-full bg-brand-2 hover:bg-hover-2 text-white">
                                     Generate Poem
                                 </Button>

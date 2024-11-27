@@ -7,21 +7,20 @@ import {
 } from "@/components/ui/select"
 import LabelInput from "../LabelInput";
 
+type Props = {
+    id: string
+    handleSelectChange: (field: string, value: string) => void
+}
 
-
-const PoemAudienceSelect = () => {
-    const handleChange = (value: any) => {
-        console.log("Selected audience:", value);
-    };
-
+const PoemAudienceSelect = ({ handleSelectChange, id }: Props) => {
     return (
         <div>
             <LabelInput inputId="poem-audience">
                 Who will be reading this poem?
             </LabelInput>
-            < Select onValueChange={handleChange} >
+            < Select onValueChange={(value) => handleSelectChange(id, value)} >
                 <SelectTrigger id="poem-audience" className="w-full mt-2" >
-                    <span className="text-brand-2">Select your audience </span>
+                    <SelectValue placeholder="Select your audience" />
                 </SelectTrigger>
                 < SelectContent >
                     <SelectItem value="friend" > A Friend </SelectItem>
