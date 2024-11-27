@@ -1,5 +1,5 @@
 'use client'
-
+import Image from "next/image"
 import { useState } from 'react'
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
@@ -9,6 +9,12 @@ import { Card, CardContent, CardFooter, CardHeader, CardTitle } from "@/componen
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
 import { generateAiPoem } from '../actions/poem'
 import { Preview } from '@/components/Preview'
+import PoemAudienceSelect from '@/components/poem-inputs/PoemAudienceSelect'
+import LanguageStyleSelect from '@/components/poem-inputs/LanguageStyleSelect'
+import ToneMoodSelect from '@/components/poem-inputs/ToneMoodSelect'
+import AdditionalInfoTextarea from '@/components/poem-inputs/AdditionalInfoTextarea'
+import NameInput from '@/components/poem-inputs/NameInput'
+import Link from "next/link"
 
 export default function GeneratePage() {
     const [step, setStep] = useState(1)
@@ -40,19 +46,25 @@ export default function GeneratePage() {
     }
 
     const handleCheckout = () => {
-        // Simulating checkout process
         alert('Proceeding to checkout...')
         setStep(3)
     }
 
-    console.log(generatedPoem)
-
-
     return (
         <div className="min-h-screen ">
             <Card className="max-w-2xl mx-auto bg-inherit shadow-none border-none">
-                <CardHeader className=" text-white">
-                    <CardTitle className="text-red-500 text-2xl font-bold">Welcome to PoemPost</CardTitle>
+                <CardHeader className=" text-white flex items-center">
+                    <Link href={'/'}>
+                        <Image
+                            src="/poempost-icon.png"
+                            alt="icon"
+                            className="w-[100%]"
+                            width={200}
+                            height={150}
+                            priority
+                        />
+                    </Link>
+
                 </CardHeader>
                 <CardContent className="pt-6">
                     <Tabs value={`step${step}`} className="w-full">
@@ -60,71 +72,33 @@ export default function GeneratePage() {
                             <TabsTrigger
                                 value="step1"
                                 disabled={step < 1}
-                                className="data-[state=active]:bg-red-500 data-[state=active]:text-white"
+                                className="data-[state=active]:bg-brand-2 data-[state=active]:text-white"
                             >
                                 Input
                             </TabsTrigger>
                             <TabsTrigger
                                 value="step2"
                                 disabled={step < 2}
-                                className="data-[state=active]:bg-red-500 data-[state=active]:text-white"
+                                className="data-[state=active]:bg-brand-2 data-[state=active]:text-white"
                             >
                                 Preview
                             </TabsTrigger>
                             <TabsTrigger
                                 value="step3"
                                 disabled={step < 3}
-                                className="data-[state=active]:bg-red-500 data-[state=active]:text-white"
+                                className="data-[state=active]:bg-brand-2 data-[state=active]:text-white"
                             >
                                 Checkout
                             </TabsTrigger>
                         </TabsList>
                         <TabsContent value="step1">
                             <form onSubmit={(e) => { e.preventDefault(); generatePoem(); }} className="space-y-4">
-                                <div>
-                                    <Label htmlFor="recipientName" className="text-red-700">Recipient&apos;s Name</Label>
-                                    <Input
-                                        id="recipientName"
-                                        name="recipientName"
-                                        value={inputs.recipientName}
-                                        onChange={handleInputChange}
-                                        required
-                                        className="border-red-200 focus:ring-red-500 focus:border-red-500"
-                                    />
-                                </div>
-                                <div>
-                                    <Label htmlFor="occasion" className="text-red-700">Occasion</Label>
-                                    {/* <Input
-                                        id="occasion"
-                                        name="occasion"
-                                        value={inputs.occasion}
-                                        onChange={handleInputChange}
-                                        required
-                                        className="border-red-200 focus:ring-red-500 focus:border-red-500"
-                                    /> */}
-                                </div>
-                                <div>
-                                    <Label htmlFor="tone" className="text-red-700">Desired Tone</Label>
-                                    {/* <Input
-                                        id="tone"
-                                        name="tone"
-                                        value={inputs.tone}
-                                        onChange={handleInputChange}
-                                        required
-                                        className="border-red-200 focus:ring-red-500 focus:border-red-500"
-                                    /> */}
-                                </div>
-                                <div>
-                                    <Label htmlFor="additionalInfo" className="text-red-700">Additional Information</Label>
-                                    {/* <Textarea
-                                        id="additionalInfo"
-                                        name="additionalInfo"
-                                        value={inputs.additionalInfo}
-                                        onChange={handleInputChange}
-                                        className="border-red-200 focus:ring-red-500 focus:border-red-500"
-                                    /> */}
-                                </div>
-                                <Button type="submit" className="w-full bg-red-500 hover:bg-red-600 text-white">
+                                <NameInput />
+                                <LanguageStyleSelect />
+                                <PoemAudienceSelect />
+                                <ToneMoodSelect />
+                                <AdditionalInfoTextarea />
+                                <Button type="submit" className="w-full bg-brand-2 hover:bg-hover-2 text-white">
                                     Generate Poem
                                 </Button>
                             </form>
@@ -132,13 +106,12 @@ export default function GeneratePage() {
                         <TabsContent value="step2">
                             <div className="space-y-4">
                                 <Textarea
-                                    // value={generatedPoem.replace(/\\n/g, "\n")}
                                     value={generatedPoem}
                                     className="min-h-[200px] border-red-200 focus:ring-red-500 focus:border-red-500"
                                     onChange={(e) => setGeneratedPoem(e.target.value)}
                                 />
                                 <Preview poemPreview={generatedPoem} />
-                                <Button onClick={handleCheckout} className="w-full bg-red-500 hover:bg-red-600 text-white">
+                                <Button onClick={handleCheckout} className="w-full bg-brand-2 hover:bg-hover-2 text-white">
                                     Proceed to Checkout
                                 </Button>
                             </div>
@@ -159,7 +132,7 @@ export default function GeneratePage() {
                                 </div>
                                 <Button
                                     onClick={() => alert('Thank you for your purchase!')}
-                                    className="w-full bg-red-500 hover:bg-red-600 text-white"
+                                    className="w-full bg-brand-2 hover:bg-hover-2 text-white"
                                 >
                                     Complete Purchase
                                 </Button>
@@ -179,7 +152,7 @@ export default function GeneratePage() {
                     <Button
                         onClick={() => setStep(Math.min(3, step + 1))}
                         disabled={step === 3}
-                        className="bg-red-500 hover:bg-red-600 text-white"
+                        className="bg-brand-2 hover:bg-hover-2 text-white"
                     >
                         Next
                     </Button>

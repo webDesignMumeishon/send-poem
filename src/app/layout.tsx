@@ -38,7 +38,7 @@ export default function RootLayout({
           </header>
           <div className="min-h-screen flex flex-col">
             <main className="flex-grow">{children}</main>
-            <footer className="bg-red-800 text-white py-8">
+            <footer className="bg-brand-2 text-white py-8">
               <div className="container mx-auto px-4 text-center">
                 <p>&copy; 2024 PoemPost AI. All rights reserved.</p>
               </div>

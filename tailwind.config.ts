@@ -53,6 +53,9 @@ export default {
 				brand: {
 					'1': '#ef8989',
 					'2': '#592525'
+				},
+				hover: {
+					'2': '#8b5151'
 				}
 			},
 			borderRadius: {
