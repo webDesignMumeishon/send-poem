@@ -1,5 +1,6 @@
 'use client'
 import Image from "next/image"
+import axios from 'axios'
 import { useState } from 'react'
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
@@ -34,6 +35,7 @@ export default function GeneratePage() {
         tone: '',
         additional: ''
     })
+    const [poemDocument, setPoemDocument] = useState<any>({})
     const [generatedPoem, setGeneratedPoem] = useState('')
 
     const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
@@ -47,23 +49,20 @@ export default function GeneratePage() {
     const generatePoem = async () => {
         setLoading(true)
         try {
-            const poemRaw= await generateAiPoem(inputs)
-            setGeneratedPoem(`${poemRaw}`)
+            const { poemText, poemDocument } = await generateAiPoem(inputs)
+            setPoemDocument(poemDocument)
+            setGeneratedPoem(`${poemText}`)
             setLoading(false)
             setStep(2)
         } catch (error) {
             setLoading(false)
             alert(JSON.stringify(error))
         }
-
     }
 
     const handleCheckout = () => {
-        alert('Proceeding to checkout...')
         setStep(3)
     }
-
-    console.log(inputs)
 
     return (
         <div className="min-h-screen ">
@@ -122,7 +121,7 @@ export default function GeneratePage() {
                             <div className="space-y-4">
                                 <Textarea
                                     value={generatedPoem}
-                                    className="min-h-[200px] border-red-200 focus:ring-red-500 focus:border-red-500"
+                                    className="min-h-[400px] border-red-200 focus:ring-red-500 focus:border-red-500"
                                     onChange={(e) => setGeneratedPoem(e.target.value)}
                                 />
                                 <Preview poemPreview={generatedPoem} />
@@ -133,24 +132,30 @@ export default function GeneratePage() {
                         </TabsContent>
                         <TabsContent value="step3">
                             <div className="space-y-4">
-                                <h3 className="text-lg font-semibold text-red-700">Checkout</h3>
-                                <p className="text-red-600">Your personalized poem is ready for purchase!</p>
-                                <div>
-                                    <Label htmlFor="email" className="text-red-700">Email</Label>
-                                    <Input
-                                        id="email"
-                                        type="email"
-                                        placeholder="Enter your email"
-                                        required
-                                        className="border-red-200 focus:ring-red-500 focus:border-red-500"
+                                <h3 className="text-lg font-semibold text-brand-2 text-center">Checkout</h3>
+                                <p className="text-brand-2 text-center">Your personalized poem is ready for purchase!</p>
+                    
+                                <form action="/api/checkout" method="POST">
+                                    <input
+                                        type="hidden"
+                                        name="poemId"
+                                        value={poemDocument._id}
                                     />
-                                </div>
-                                <Button
-                                    onClick={() => alert('Thank you for your purchase!')}
-                                    className="w-full bg-brand-2 hover:bg-hover-2 text-white"
-                                >
-                                    Complete Purchase
-                                </Button>
+                                    <input
+                                        type="hidden"
+                                        name="customerEmail"
+                                        value={poemDocument.email}
+                                    />
+                                    <section>
+                                        <Button
+                                            type="submit"
+                                            role="link"
+                                            className="w-full bg-brand-2 hover:bg-hover-2 text-white"
+                                        >
+                                            Complete Purchase
+                                        </Button>
+                                    </section>
+                                </form>
                             </div>
                         </TabsContent>
                     </Tabs>
@@ -160,7 +165,7 @@ export default function GeneratePage() {
                         variant="outline"
                         onClick={() => setStep(Math.max(1, step - 1))}
                         disabled={step === 1}
-                        className="border-red-200 text-red-600 hover:bg-red-50"
+                        className="border-brand-2 text-brand-2 hover:bg-red-50"
                     >
                         Previous
                     </Button>

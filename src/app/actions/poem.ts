@@ -3,19 +3,24 @@
 import OpenAI from "openai";
 import { PoemFields } from "../generate/page";
 import { ChatCompletionMessageParam } from "openai/resources/chat/index.mjs";
+import dbConnect from "@/lib/db";
+import Poem from "@/models/poem";
+import { currentUser } from "@clerk/nextjs/server";
 
 const openai = new OpenAI({
-    apiKey: process.env.OPENAI_API_KEY, // Ensure your .env is properly configured
+    apiKey: process.env.OPENAI_API_KEY,
 });
 
-const POEM_LIMIT = process.env.POEM_LIMIT || 790
+const POEM_LIMIT = process.env.POEM_LIMIT || 700
 
-type PoemReturn = {
-    poemRaw: string;
-    poemBreakLine: string;
-}
+export async function generateAiPoem(fields: PoemFields): Promise<{ poemDocument: any, poemText: string }> {
+    await dbConnect()
+    const user = await currentUser()
 
-export async function generateAiPoem(fields: PoemFields): Promise<string> {
+    if (user === null) {
+        throw new Error('please log in')
+    }
+
 
     const messagesConfigs: OpenAI.Chat.Completions.ChatCompletionMessageParam[] = [
         {
@@ -40,7 +45,6 @@ export async function generateAiPoem(fields: PoemFields): Promise<string> {
         messagesConfigs.push(style)
     }
 
-
     const completion = await openai.chat.completions.create({
         messages: messagesConfigs,
         model: "gpt-4o-mini",
@@ -48,8 +52,11 @@ export async function generateAiPoem(fields: PoemFields): Promise<string> {
 
     const poem = completion.choices[0].message.content;
 
+    const poemDocument = await Poem.create({ name: fields.name, text: poem, email: user.emailAddresses[0].emailAddress })
+
     if (poem !== null) {
-        return poem.replace(/\\n/g, "")
+        const poemText = poem.replace(/\\n/g, "")
+        return { poemDocument, poemText }
     }
     else {
         throw new Error('Cannot generate poem')
