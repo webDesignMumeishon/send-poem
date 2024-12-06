@@ -121,7 +121,7 @@ export default function GeneratePage() {
                             <div className="space-y-4">
                                 <Textarea
                                     value={generatedPoem}
-                                    className="min-h-[400px] border-red-200 focus:ring-red-500 focus:border-red-500"
+                                    className="min-h-[400px] border-brand-2 focus:ring-brand-2 focus:border-brand-2"
                                     onChange={(e) => setGeneratedPoem(e.target.value)}
                                 />
                                 <Preview poemPreview={generatedPoem} />
@@ -134,7 +134,7 @@ export default function GeneratePage() {
                             <div className="space-y-4">
                                 <h3 className="text-lg font-semibold text-brand-2 text-center">Checkout</h3>
                                 <p className="text-brand-2 text-center">Your personalized poem is ready for purchase!</p>
-                    
+
                                 <form action="/api/checkout" method="POST">
                                     <input
                                         type="hidden"
