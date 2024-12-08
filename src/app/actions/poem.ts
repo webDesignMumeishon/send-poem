@@ -25,11 +25,7 @@ export async function generateAiPoem(fields: PoemFields): Promise<{ poemDocument
     const messagesConfigs: OpenAI.Chat.Completions.ChatCompletionMessageParam[] = [
         {
             role: "system",
-            content: "You are a poet assistant. Generate poems where each line ends with a newline character (`\\n`) and follows a poetic format. Ensure the poem has a clear rhyme scheme or structure."
-        },
-        {
-            role: "system",
-            content: `Never include more than ${POEM_LIMIT}, it is extremely important that you follow this`
+            content: `You are a poet assistant. Generate poems where each line ends with a newline character ('\\n') and follows a poetic format. Ensure the poem has a clear rhyme scheme or structure.The entire poem, including spaces and punctuation, must not exceed ${POEM_LIMIT} characters.`
         },
         {
             role: "user",
@@ -56,7 +52,7 @@ export async function generateAiPoem(fields: PoemFields): Promise<{ poemDocument
 
     if (poem !== null) {
         const poemText = poem.replace(/\\n/g, "")
-        return { poemDocument, poemText }
+        return { poemDocument: poemDocument.toObject(), poemText }
     }
     else {
         throw new Error('Cannot generate poem')
