@@ -4,7 +4,7 @@ import OpenAI from "openai";
 import { PoemFields } from "../generate/page";
 import { ChatCompletionMessageParam } from "openai/resources/chat/index.mjs";
 import dbConnect from "@/lib/db";
-import Poem from "@/models/poem";
+import Poem, { IPoem } from "@/models/poem";
 import { currentUser } from "@clerk/nextjs/server";
 
 const openai = new OpenAI({
@@ -13,7 +13,7 @@ const openai = new OpenAI({
 
 const POEM_LIMIT = process.env.POEM_LIMIT || 700
 
-export async function generateAiPoem(fields: PoemFields): Promise<{ poemDocument: any, poemText: string }> {
+export async function generateAiPoem(fields: PoemFields): Promise<{ poemDocument: IPoem, poemText: string }> {
     await dbConnect()
     const user = await currentUser()
 

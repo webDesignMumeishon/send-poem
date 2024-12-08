@@ -1,6 +1,13 @@
-import mongoose from 'mongoose';
+import mongoose, { Model } from "mongoose";
 
-const PoemSchema = new mongoose.Schema({
+export interface IPoem {
+    _id: string;
+    email: string;
+    text: string; // Optional because there's no `required: true`
+    name: string;
+}
+
+const PoemSchema = new mongoose.Schema<IPoem>({
     email: {
         type: String,
         required: true,
@@ -11,13 +18,17 @@ const PoemSchema = new mongoose.Schema({
     },
     text: {
         type: String,
+        required: true,
         maxlength: [900, "Text cannot exceed 800 characters."],
     },
     name: {
         type: String,
         required: true,
-        trim: true, // Removes leading/trailing spaces
+        trim: true,
     },
 });
 
-export default mongoose.models.Poem || mongoose.model("Poem", PoemSchema);
+// Specify the model type
+const Poem: Model<IPoem> = mongoose.models.Poem || mongoose.model<IPoem>("Poem", PoemSchema);
+
+export default Poem;

@@ -4,7 +4,7 @@ import { Input } from '../ui/input'
 
 type Props = {
     value: string
-    handleInputChange: any
+    handleInputChange: (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => void
 }
 
 const NameInput = ({ value, handleInputChange }: Props) => {

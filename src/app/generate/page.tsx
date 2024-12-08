@@ -1,12 +1,9 @@
 'use client'
 import Image from "next/image"
-import axios from 'axios'
 import { useState } from 'react'
 import { Button } from "@/components/ui/button"
-import { Input } from "@/components/ui/input"
 import { Textarea } from "@/components/ui/textarea"
-import { Label } from "@/components/ui/label"
-import { Card, CardContent, CardFooter, CardHeader, CardTitle } from "@/components/ui/card"
+import { Card, CardContent, CardFooter, CardHeader } from "@/components/ui/card"
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
 import { generateAiPoem } from '../actions/poem'
 import { Preview } from '@/components/Preview'
@@ -16,6 +13,7 @@ import ToneMoodSelect from '@/components/poem-inputs/ToneMoodSelect'
 import AdditionalInfoTextarea from '@/components/poem-inputs/AdditionalInfoTextarea'
 import NameInput from '@/components/poem-inputs/NameInput'
 import Link from "next/link"
+import { IPoem } from "@/models/poem"
 
 export interface PoemFields {
     name: string;       // Name or title of the content
@@ -27,7 +25,7 @@ export interface PoemFields {
 
 export default function GeneratePage() {
     const [step, setStep] = useState(1)
-    const [loading, setLoading] = useState(false)
+    // const [loading, setLoading] = useState(false)
     const [inputs, setInputs] = useState<PoemFields>({
         name: '',
         style: '',
@@ -35,7 +33,7 @@ export default function GeneratePage() {
         tone: '',
         additional: ''
     })
-    const [poemDocument, setPoemDocument] = useState<any>({})
+    const [poemDocument, setPoemDocument] = useState<IPoem>({ email: '', text: '', name: '', _id: '' })
     const [generatedPoem, setGeneratedPoem] = useState('')
 
     const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
@@ -47,15 +45,15 @@ export default function GeneratePage() {
     }
 
     const generatePoem = async () => {
-        setLoading(true)
+        // setLoading(true)
         try {
             const { poemText, poemDocument } = await generateAiPoem(inputs)
             setPoemDocument(poemDocument)
             setGeneratedPoem(`${poemText}`)
-            setLoading(false)
+            // setLoading(false)
             setStep(2)
         } catch (error) {
-            setLoading(false)
+            // setLoading(false)
             alert(JSON.stringify(error))
         }
     }

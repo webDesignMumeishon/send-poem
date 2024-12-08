@@ -6,7 +6,7 @@ import { Textarea } from '../ui/textarea'
 type Props = {
     id: string
     value: string
-    handleInputChange: any
+    handleInputChange: (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => void
 }
 
 const AdditionalInfoTextarea = ({ value, handleInputChange, id }: Props) => {

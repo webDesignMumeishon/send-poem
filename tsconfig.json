@@ -3,7 +3,9 @@
     "target": "ES2017",
     "lib": ["dom", "dom.iterable", "esnext"],
     "allowJs": true,
+    "typeRoots": ["./node_modules/@types", "./src"],
     "skipLibCheck": true,
+    "types": [],
     "strict": true,
     "noEmit": true,
     "esModuleInterop": true,
@@ -22,6 +24,12 @@
       "@/*": ["./src/*"]
     }
   },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts", "src/components/poem-inputs/Audience.tss"],
+  "include": [
+    "next-env.d.ts",
+    "**/*.ts",
+    "**/*.tsx",
+    ".next/types/**/*.ts",
+    "src/components/poem-inputs/Audience.tss"
+  ],
   "exclude": ["node_modules"]
 }

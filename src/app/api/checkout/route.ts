@@ -16,7 +16,7 @@ export async function POST(req: NextRequest) {
             { status: 400 }
         );
     }
-    
+
     try {
         const session = await stripe.checkout.sessions.create({
             line_items: [
@@ -32,10 +32,17 @@ export async function POST(req: NextRequest) {
             automatic_tax: { enabled: false },
         });
         return NextResponse.redirect(session.url || '', 303);
-    } catch (err: any) {
-        return NextResponse.json(
-            { error: err.message },
-            { status: err.statusCode || 500 }
-        );
+    } catch (err: unknown) {
+        if (err instanceof Stripe.errors.StripeError) {
+            return NextResponse.json(
+                { error: err.message },
+                { status: err.statusCode || 500 }
+            );
+        } else {
+            return NextResponse.json(
+                { error: 'Internal Server Error' },
+                { status: 500 }
+            );
+        }
     }
 }
