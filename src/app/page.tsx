@@ -65,20 +65,15 @@ export default function HomePage() {
             </p>
 
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Button className="bg-brand-2 hover:bg-red-700 text-lg px-8 py-6">
-                <Link href={'/generate'}>
-                  Send It Now!
-                </Link>
-              </Button>
-              <Button
-                variant="outline"
-                className="border-red-200 hover:bg-red-50 text-brand-2 text-lg px-8 py-6"
-              >
-                <Link href={'/demo'}>
-                  View Demo
-                </Link>
-              </Button>
+              <Link href="/generate" className="bg-brand-2 hover:bg-hover-2 text-lg  text-white p-4 rounded-md">
+                Send It Now!
+              </Link>
+
+              <Link href={'/demo'} className="hover:bg-red-50 text-brand-2 text-lg p-4 border-red inline-block">
+                View Demo
+              </Link>
             </div>
+
 
 
             <div className="mt-12 flex items-center justify-center gap-2">
