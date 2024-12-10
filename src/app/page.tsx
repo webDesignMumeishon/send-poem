@@ -182,14 +182,14 @@ export default function HomePage() {
       {/* Testimonials */}
       <section id="testimonials" className="py-16">
         <div className="container mx-auto px-4">
-          <h2 className="text-3xl font-bold text-center text-red-800 mb-12">
+          <h2 className="text-3xl font-bold text-center text-brand-2 mb-12">
             Real Love Stories, Real Testimonials
           </h2>
           <div className="max-w-2xl mx-auto">
             <Card className="bg-white border-red-100">
               <CardContent className="p-8">
-                <p className="text-lg text-red-600 mb-4 italic">&quot;{testimonials[activeTestimonial].quote}&quot;</p>
-                <p className="text-red-700 font-semibold">- {testimonials[activeTestimonial].author}</p>
+                <p className="text-lg text-brand-2 mb-4 italic">&quot;{testimonials[activeTestimonial].quote}&quot;</p>
+                <p className="text-brand-2 font-semibold">- {testimonials[activeTestimonial].author}</p>
               </CardContent>
             </Card>
             <div className="flex justify-center mt-4 space-x-2">
@@ -210,16 +210,16 @@ export default function HomePage() {
       {/* Comparison Table */}
       <section className="py-16 bg-white">
         <div className="container mx-auto px-4">
-          <h2 className="text-3xl font-bold text-center text-red-800 mb-12">
+          <h2 className="text-3xl font-bold text-center text-brand-2 mb-12">
             How We Compare
           </h2>
           <div className="overflow-x-auto">
             <table className="w-full max-w-2xl mx-auto">
               <thead>
                 <tr className="bg-red-100">
-                  <th className="p-4 text-left text-red-800">Feature</th>
-                  <th className="p-4 text-center text-red-800">Our Tool</th>
-                  <th className="p-4 text-center text-red-800">Other Generators</th>
+                  <th className="p-4 text-left text-brand-2">Feature</th>
+                  <th className="p-4 text-center text-brand-2">Our Tool</th>
+                  <th className="p-4 text-center text-brand-2">Other Generators</th>
                 </tr>
               </thead>
               <tbody>
@@ -232,7 +232,7 @@ export default function HomePage() {
                   "Unlimited Usage"
                 ].map((feature, index) => (
                   <tr key={index} className={index % 2 === 0 ? 'bg-red-50' : 'bg-white'}>
-                    <td className="p-4 text-red-700">{feature}</td>
+                    <td className="p-4 text-brand-2">{feature}</td>
                     <td className="p-4 text-center">
                       <CheckCircle className="inline-block text-green-500" />
                     </td>
@@ -254,7 +254,7 @@ export default function HomePage() {
       {/* Closing Section */}
       {/* <section className="py-20 text-center">
         <div className="container mx-auto px-4">
-          <h2 className="text-3xl md:text-4xl font-bold text-red-800 mb-6">
+          <h2 className="text-3xl md:text-4xl font-bold text-brand-2 mb-6">
             Transform Your Emotions into Words & Art with Our AI Love Poem Generator
           </h2>
           <Button size="lg" className="bg-red-600 hover:bg-red-700 text-white text-lg px-8 py-4 mb-4">
