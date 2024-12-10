@@ -112,7 +112,7 @@
 }
 
 .envelop-flap > .envelop .letter {
-  bottom: 350px;
+  bottom: 380px;
   transform: scale(1.5);
   transition-delay: 1s;
 }
