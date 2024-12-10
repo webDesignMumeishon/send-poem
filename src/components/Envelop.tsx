@@ -18,7 +18,7 @@ const Envelop = ({ name, content }: Props) => {
     return (
         <div className='envelop-main bg-gradient-to-b from-pink-50 to-red-50'>
             <div className="envelop-container">
-                <div className={`envelop-wrapper ${open && 'envelop-flap'}`} style={{ top: `${open ? '150px' : '0px'}` }}>
+                <div className={`envelop-wrapper ${open && 'envelop-flap'}`} style={{ top: `${open ? '200px' : '0px'}` }}>
                     <div className="envelop">
                         <div className={`letter ${open && 'letter-shadow'}`}>
                             <div className="text">
