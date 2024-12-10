@@ -68,7 +68,7 @@ export default function HomePage() {
                 Send It Now!
               </Link>
 
-              <Link href={'/demo'} className="hover:bg-red-50 text-brand-2 text-lg p-4 border-red inline-block">
+              <Link href={'/demo'} className="hover:bg-red-50 hover:rounded-md text-brand-2 text-lg p-4 border-red inline-block">
                 View Demo
               </Link>
             </div>

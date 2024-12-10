@@ -94,15 +94,14 @@ export default function Success() {
     const shareLink = () => {
         let url = ''
         if (typeof window !== 'undefined') {
-            url = window.location.href;
+            url = `${DOMAIN_URL}/p/${poemId}`;
         }
-        const title = "Check this out!";
-        const text = "Here's something interesting I want to share with you.";
+        const title = "This is for you... ";
+        // const text = `Here's something interesting I want to share with you: ${url}`;
 
         if (navigator.share) {
             navigator.share({
                 title,
-                text,
                 url,
             })
                 .then(() => console.log("Link shared successfully!"))
@@ -164,15 +163,15 @@ export default function Success() {
                             <Button
                                 variant="outline"
                                 size="icon"
-                                className="rounded-full border-red-200 text-red-600 hover:bg-red-50"
-                                onClick={() => {/* Logic to share on social media */ }}
+                                className="rounded-full border-brand-2 text-brand-2 hover:bg-red-50"
+                                onClick={shareLink}
                             >
                                 <Share2 className="h-4 w-4" />
                             </Button>
                             <Button
                                 variant="outline"
                                 size="icon"
-                                className="rounded-full border-red-200 text-red-600 hover:bg-red-50"
+                                className="rounded-full border-brand-2 text-brand-2 hover:bg-red-50"
                                 onClick={() => setShowConfetti(true)}
                             >
                                 <Heart className="h-4 w-4" />
