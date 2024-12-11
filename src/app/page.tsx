@@ -75,16 +75,16 @@ export default function HomePage() {
 
 
 
-            <div className="mt-12 flex items-center justify-center gap-2">
+            <div className="mt-12 flex items-center justify-center gap-4">
               <div className="flex -space-x-2">
                 {['/guy1.jpeg', '/guy2.jpeg', '/guy3.jpeg'].map((i) => (
                   <Image
                     key={i}
                     src={`${i}`}
                     alt=""
-                    width={24}
-                    height={24}
-                    className="w-8 h-8 rounded-full bg-red-200 border-2 border-white"
+                    width={48}
+                    height={48}
+                    className="w-10 h-10 rounded-full bg-red-200 border-2 border-white"
                     priority
                   />
                 ))}

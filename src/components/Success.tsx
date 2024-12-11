@@ -3,7 +3,7 @@
 import { useState, useEffect } from 'react'
 import { Button } from "@/components/ui/button"
 import { Card, CardContent } from "@/components/ui/card"
-import { Check, CheckCircle, Copy, Heart, Share2 } from 'lucide-react'
+import { Check, CheckCircle, Copy, Share2 } from 'lucide-react'
 import Link from 'next/link'
 import confetti from 'canvas-confetti'
 import { useRouter, useSearchParams } from 'next/navigation'
@@ -21,7 +21,6 @@ if (typeof window !== 'undefined') {
 
 
 export default function Success() {
-    const [showConfetti, setShowConfetti] = useState(true)
     const router = useRouter(); // Router for navigation
     const searchParams = useSearchParams()
     const poemId = searchParams.get('poemId');
@@ -58,38 +57,36 @@ export default function Success() {
     }, [poemId, router]);
 
     useEffect(() => {
-        if (showConfetti) {
-            const duration = 3 * 1000
-            const animationEnd = Date.now() + duration
-            const defaults = { startVelocity: 30, spread: 360, ticks: 60, zIndex: 0 }
+        const duration = 3 * 1000
+        const animationEnd = Date.now() + duration
+        const defaults = { startVelocity: 30, spread: 360, ticks: 60, zIndex: 0 }
 
-            function randomInRange(min: number, max: number) {
-                return Math.random() * (max - min) + min
+        function randomInRange(min: number, max: number) {
+            return Math.random() * (max - min) + min
+        }
+
+        const interval: NodeJS.Timeout = setInterval(function () {
+            const timeLeft = animationEnd - Date.now()
+
+            if (timeLeft <= 0) {
+                return clearInterval(interval)
             }
 
-            const interval: NodeJS.Timeout = setInterval(function () {
-                const timeLeft = animationEnd - Date.now()
+            const particleCount = 50 * (timeLeft / duration)
+            confetti(Object.assign({}, defaults, {
+                particleCount,
+                origin: { x: randomInRange(0.1, 0.3), y: Math.random() - 0.2 },
+                colors: ['#FFC0CB', '#FF69B4', '#FF1493', '#C71585']
+            }))
+            confetti(Object.assign({}, defaults, {
+                particleCount,
+                origin: { x: randomInRange(0.7, 0.9), y: Math.random() - 0.2 },
+                colors: ['#FFC0CB', '#FF69B4', '#FF1493', '#C71585']
+            }))
+        }, 250)
 
-                if (timeLeft <= 0) {
-                    return clearInterval(interval)
-                }
-
-                const particleCount = 50 * (timeLeft / duration)
-                confetti(Object.assign({}, defaults, {
-                    particleCount,
-                    origin: { x: randomInRange(0.1, 0.3), y: Math.random() - 0.2 },
-                    colors: ['#FFC0CB', '#FF69B4', '#FF1493', '#C71585']
-                }))
-                confetti(Object.assign({}, defaults, {
-                    particleCount,
-                    origin: { x: randomInRange(0.7, 0.9), y: Math.random() - 0.2 },
-                    colors: ['#FFC0CB', '#FF69B4', '#FF1493', '#C71585']
-                }))
-            }, 250)
-
-            return () => clearInterval(interval)
-        }
-    }, [showConfetti])
+        return () => clearInterval(interval)
+    }, [])
 
     const shareLink = () => {
         let url = ''
