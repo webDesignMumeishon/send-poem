@@ -168,14 +168,6 @@ export default function Success() {
                             >
                                 <Share2 className="h-4 w-4" />
                             </Button>
-                            <Button
-                                variant="outline"
-                                size="icon"
-                                className="rounded-full border-brand-2 text-brand-2 hover:bg-red-50"
-                                onClick={() => setShowConfetti(true)}
-                            >
-                                <Heart className="h-4 w-4" />
-                            </Button>
                         </div>
                     </div>
                     <div className="mt-8">

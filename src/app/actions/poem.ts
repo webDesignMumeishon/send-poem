@@ -51,10 +51,24 @@ export async function generateAiPoem(fields: PoemFields): Promise<{ poemDocument
     const poemDocument = await Poem.create({ name: fields.name, text: poem, email: user.emailAddresses[0].emailAddress })
 
     if (poem !== null) {
+
+        const plainPoemDocument = {
+            ...poemDocument.toObject(),
+            _id: poemDocument._id.toString(), // Convert _id to a string
+        };
+
         const poemText = poem.replace(/\\n/g, "")
-        return { poemDocument: poemDocument.toObject(), poemText }
+        return { poemDocument: plainPoemDocument, poemText }
     }
     else {
         throw new Error('Cannot generate poem')
     }
+}
+
+export async function updatePoem(id: string, poemText: string) {
+    await Poem.findByIdAndUpdate(
+        id,
+        { text: poemText },
+        { new: true }
+    );
 }
