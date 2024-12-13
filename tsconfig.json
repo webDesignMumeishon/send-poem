@@ -5,7 +5,7 @@
     "allowJs": true,
     "typeRoots": ["./node_modules/@types", "./src"],
     "skipLibCheck": true,
-    "types": [],
+    "types": ["node"],
     "strict": true,
     "noEmit": true,
     "esModuleInterop": true,
@@ -29,7 +29,8 @@
     "**/*.ts",
     "**/*.tsx",
     ".next/types/**/*.ts",
-    "src/components/poem-inputs/Audience.tss"
+    "src/components/poem-inputs/Audience.tss",
+    "src/scripts/poemStyles.mts"
   ],
   "exclude": ["node_modules"]
 }

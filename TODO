@@ -1,11 +1,27 @@
 
-Todo Programming:
- ✔ Verify authentication before requesting to OpenAI @done(24-12-10 23:11)
- ☐ Section to see poems created
- ☐ Add domain
- ☐ add spanish option
- ✔ Fix envelop in desktop screen size @started(24-12-10 07:15) @done(24-12-10 07:27) @lasted(12m17s)
- ☐ Fix testimonial in landing
- ✔ Fix object when generating the poem using AI @started(24-12-10 22:15) @done(24-12-10 22:25) @lasted(10m1s)
- ✔ Loader when the poem is being created @started(24-12-10 22:28) @done(24-12-10 22:51) @lasted(23m38s)
- ✔ Save the poem after it was modified @started(24-12-10 22:55) @done(24-12-10 23:09) @lasted(14m16s)
+Todo Priority:
+    ✔ Verify authentication before requesting to OpenAI @done(24-12-10 23:11)
+    ☐ Section to see poems created
+    ☐ Add domain
+    ☐ add spanish option
+    ✔ Fix envelop in desktop screen size @started(24-12-10 07:15) @done(24-12-10 07:27) @lasted(12m17s)
+    ✔ Fix testimonial in landing @done(24-12-10 23:33)
+    ✔ Fix object when generating the poem using AI @started(24-12-10 22:15) @done(24-12-10 22:25) @lasted(10m1s)
+    ✔ Loader when the poem is being created @started(24-12-10 22:28) @done(24-12-10 22:51) @lasted(23m38s)
+    ✔ Save the poem after it was modified @started(24-12-10 22:55) @done(24-12-10 23:09) @lasted(14m16s)
+
+
+Marketing:
+    SEO:
+        ☐ Keywords research
+        ☐ Submit link to AI directories sites https://linkdr.com/dashboard/backlink-directory, this is to increase the DR of the website
+        ☐ Link building - Foundational Links (FB, Instagram, X, Youtube, LinkedIn, Reddit)
+        ☐ Link building citations
+        ☐ Run these in a indexer
+
+    TikTok:
+        ☐ Create account
+
+Features:
+    ☐ Add Singing voice to sing the poem
+    ☐ Add a voice to read the poem
