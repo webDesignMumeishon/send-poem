@@ -34,7 +34,7 @@ export default function HomePage() {
             />
           </Link>
 
-          <Link href="/poem-generator" className="text-2xl font-bold text-brand-2">Poem Generator</Link>
+          <Link href="/poem-generator" className="text-2xl font-bold text-brand-2">Free Poem Generator</Link>
         </nav>
       </header>
 
