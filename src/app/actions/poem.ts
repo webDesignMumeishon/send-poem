@@ -11,6 +11,20 @@ const openai = new OpenAI({
     apiKey: process.env.OPENAI_API_KEY,
 });
 
+interface PoemFormData {
+    topic: string
+    mood: string
+    keywords: string
+    audience: string
+    perspective: string
+    length: string
+    rhyme: string
+    languageStyle: string
+    timeSetting: string
+    personalization: string
+    style: string
+}
+
 const POEM_LIMIT = process.env.POEM_LIMIT || 700
 
 export async function generateAiPoem(fields: PoemFields): Promise<{ poemDocument: IPoem, poemText: string }> {
@@ -71,4 +85,46 @@ export async function updatePoem(id: string, poemText: string) {
         { text: poemText },
         { new: true }
     );
+}
+
+export async function generatePoemByStyle(formData: PoemFormData) {
+    try {
+        const prompt = `
+          Write a ${formData.style} with the following characteristics:
+          - Theme/Subject: ${formData.topic}
+          - Mood/Tone: ${formData.mood}
+          - Keywords or Imagery: ${formData.keywords}
+          - Audience/Recipient: ${formData.audience}
+          - Perspective: ${formData.perspective}
+          - Length: ${formData.length}
+          - Rhyme Preference: ${formData.rhyme}
+          - Language Style: ${formData.languageStyle}
+          - Time or Setting: ${formData.timeSetting}
+          - Personalization: ${formData.personalization}
+    
+          Please create a ${formData.style} that incorporates all these elements. The poem should be creative, engaging, and tailored to the specified requirements. Only return the poem text, without any additional commentary.
+        `
+        const messagesConfigs: OpenAI.Chat.Completions.ChatCompletionMessageParam[] = [
+            {
+                role: "system",
+                content: `You are a poet assistant.`
+            },
+            {
+                role: "user",
+                content: prompt
+            }
+        ]
+
+        const completion = await openai.chat.completions.create({
+            messages: messagesConfigs,
+            model: "gpt-4o-mini",
+        });
+
+        const poem = completion.choices[0].message.content;
+
+        return poem
+    } catch (error) {
+        console.error('Error generating poem:', error)
+        throw new Error('Failed to generate poem')
+    }
 }

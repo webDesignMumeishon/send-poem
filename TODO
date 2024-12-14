@@ -18,6 +18,8 @@ Marketing:
         ☐ Link building - Foundational Links (FB, Instagram, X, Youtube, LinkedIn, Reddit)
         ☐ Link building citations
         ☐ Run these in a indexer
+        ☐ Submit sitemap.xml
+        ☐ Add robots file
 
     TikTok:
         ☐ Create account
@@ -25,3 +27,4 @@ Marketing:
 Features:
     ☐ Add Singing voice to sing the poem
     ☐ Add a voice to read the poem
+    ☐ Investigate further the best way to add MongoDB to Nextjs
