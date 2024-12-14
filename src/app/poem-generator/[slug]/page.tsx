@@ -12,7 +12,7 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
 
     const slug = (await params).slug
 
-    const poemStyle = await PoemStyle.findOne({ name: slug });
+    const poemStyle = await PoemStyle.findOne({ name: decodeURIComponent(slug) });
 
     if (!poemStyle) {
         return {
