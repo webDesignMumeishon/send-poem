@@ -2,6 +2,19 @@ import Link from 'next/link'
 import { Card, CardHeader, CardTitle, CardDescription } from "@/components/ui/card"
 import PoemStyle from '@/models/poemStyle'
 
+const URL = process.env.NEXT_BASE_URL
+
+export async function generateMetadata() {
+
+    return {
+        title: `Free AI Poem Generator- Explore This Poetic Style Generator`,
+        description: 'Create stunning poems for free with our AI Poem Generator! Choose from Haiku, Sonnet, Limerick, and more to craft personalized poetry in seconds.',
+        alternates: {
+            canonical: `${URL}/poem-generator`,
+        },
+    };
+}
+
 export default async function Home() {
 
     const poemStyles = await PoemStyle.find()
