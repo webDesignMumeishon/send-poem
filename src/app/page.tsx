@@ -33,6 +33,8 @@ export default function HomePage() {
               priority
             />
           </Link>
+
+          <Link href="/poem-generator" className="text-2xl font-bold text-brand-2">Poem Generator</Link>
         </nav>
       </header>
 
