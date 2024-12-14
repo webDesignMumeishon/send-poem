@@ -28,6 +28,8 @@ export default function HomePage() {
               src="/ai-poems-icon.png"
               alt="icon"
               className="w-[40%] md:w-[50%]"
+              width={200}
+              height={200}
               priority
             />
           </Link>
