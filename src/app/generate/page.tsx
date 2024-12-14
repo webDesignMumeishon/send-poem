@@ -72,7 +72,7 @@ export default function GeneratePage() {
                 <CardHeader className=" text-white flex items-center">
                     <Link href={'/'}>
                         <Image
-                            src="/poempost-icon.png"
+                            src="/ai-poems-icon.png"
                             alt="icon"
                             className="w-[100%]"
                             width={200}

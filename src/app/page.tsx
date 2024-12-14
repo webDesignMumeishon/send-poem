@@ -25,7 +25,7 @@ export default function HomePage() {
         <nav className="container mx-auto px-2 h-16 md:h-24 flex items-center justify-between">
           <Link href="#" className="text-2xl font-bold text-red-600">
             <Image
-              src="/poempost-icon.png"
+              src="/ai-poems-icon.png"
               alt="icon"
               className="w-[40%] md:w-[50%]"
               width={200}
