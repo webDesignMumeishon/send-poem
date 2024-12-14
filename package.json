@@ -10,7 +10,7 @@
     "lint": "next lint"
   },
   "dependencies": {
-    "@clerk/nextjs": "^6.4.0",
+    "@clerk/nextjs": "^6.9.2",
     "@radix-ui/react-dialog": "^1.1.2",
     "@radix-ui/react-label": "^2.1.0",
     "@radix-ui/react-select": "^2.1.2",
@@ -26,7 +26,7 @@
     "lucide-react": "^0.460.0",
     "mongodb": "^6.11.0",
     "mongoose": "^8.9.0",
-    "next": "^15.0.3",
+    "next": "^15.1.0",
     "openai": "^4.73.1",
     "react": "18.2.0",
     "react-dom": "18.2.0",

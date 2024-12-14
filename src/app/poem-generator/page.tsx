@@ -1,6 +1,7 @@
 import Link from 'next/link'
 import { Card, CardHeader, CardTitle, CardDescription } from "@/components/ui/card"
 import PoemStyle from '@/models/poemStyle'
+import dbConnect from '@/lib/db';
 
 const URL = process.env.NEXT_BASE_URL
 
@@ -16,6 +17,7 @@ export async function generateMetadata() {
 }
 
 export default async function Home() {
+    await dbConnect()
 
     const poemStyles = await PoemStyle.find()
 
