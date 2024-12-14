@@ -61,7 +61,7 @@ export function PoemGenerator({ style }: Props) {
         try {
             const result = await generatePoemByStyle({ ...formData, style })
             setPoem(result!)
-        } catch (err) {
+        } catch {
             setError(`Failed to generate ${style}. Please try again.`)
         } finally {
             setIsLoading(false)
