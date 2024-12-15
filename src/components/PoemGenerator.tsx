@@ -57,9 +57,9 @@ export function PoemGenerator({ style }: Props) {
         e.preventDefault()
         setIsLoading(true)
         setError("")
-
         const result = await generatePoemByStyle({ ...formData, style })
         setPoem(result!)
+        setIsLoading(false)
     }
 
     if (isLoading) {
@@ -82,7 +82,6 @@ export function PoemGenerator({ style }: Props) {
                     readOnly
                     className="min-h-[600px] border-[#632C2C]/20 font-serif text-lg"
                 />
-                ok
             </div>
         )
     }
