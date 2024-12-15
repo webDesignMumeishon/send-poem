@@ -11,5 +11,5 @@ export default clerkMiddleware(async (auth, req) => {
 })
 
 export const config = {
-    matcher: ['/', '/generate', '/poem-generator', '/poem-generator/:path*', '/api/:path*', '/sitemap.xml'], // Define your routes explicitly
+    matcher: ['/', '/generate', '/poem-generator', '/poem-generator/:path*', '/api/:path*', '/sitemap.xml', '/demo'], // Define your routes explicitly
 }
