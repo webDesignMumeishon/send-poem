@@ -3,6 +3,8 @@ import localFont from "next/font/local";
 import "./globals.css";
 import { ClerkProvider, SignedIn, SignedOut, SignInButton, UserButton } from "@clerk/nextjs";
 
+const URL = process.env.NEXT_BASE_URL
+
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",
   variable: "--font-geist-sans",
