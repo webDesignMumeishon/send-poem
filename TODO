@@ -2,7 +2,7 @@
 Todo Priority:
     ✔ Verify authentication before requesting to OpenAI @done(24-12-10 23:11)
     ☐ Section to see poems created
-    ☐ Add domain
+    ✔ Add domain @done(24-12-16 08:21)
     ☐ add spanish option
     ✔ Fix envelop in desktop screen size @started(24-12-10 07:15) @done(24-12-10 07:27) @lasted(12m17s)
     ✔ Fix testimonial in landing @done(24-12-10 23:33)
@@ -11,6 +11,7 @@ Todo Priority:
     ✔ Save the poem after it was modified @started(24-12-10 22:55) @done(24-12-10 23:09) @lasted(14m16s)
     ✔ Home page for poems generator styles @started(24-12-14 10:30) @done(24-12-14 10:35) @lasted(5m30s)
     ✔ Free poem generator @started(24-12-14 10:50) @done(24-12-14 10:50) @lasted(22s)
+    ✔ Add vercel Analytics @started(24-12-16 08:23) @done(24-12-16 08:24) @lasted(1m20s)
 
 
 Marketing:
@@ -22,7 +23,7 @@ Marketing:
         ☐ Run these in a indexer
         ✔ Submit sitemap.xml @done(24-12-14 17:03)
         ✔ Add robots file @done(24-12-14 17:03)
-        ☐ Dynamic sitemap.xml   
+        ✔ Dynamic sitemap.xml @done(24-12-16 08:21)
         ☐ Blog section 
 
     TikTok:

@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { Analytics } from "@vercel/analytics/react"
 import localFont from "next/font/local";
 import "./globals.css";
 import { ClerkProvider, SignedIn, SignedOut, SignInButton, UserButton } from "@clerk/nextjs";
@@ -43,6 +44,7 @@ export default function RootLayout({
           </header>
           <div className="min-h-screen flex flex-col">
             <main className="flex-grow">{children}</main>
+            <Analytics />
             <footer className="bg-brand-2 text-white py-8">
               <div className="container mx-auto px-4 text-center">
                 <p>&copy; 2024 PoemPost AI. All rights reserved.</p>
