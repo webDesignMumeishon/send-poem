@@ -17,6 +17,9 @@ const geistMono = localFont({
 export const metadata: Metadata = {
   title: "Craft Beautiful Love Poems – Easy Online Generator",
   description: "Compose touching love poems effortlessly using our ai love poem generator.",
+  alternates: {
+    canonical: `${URL}`,
+  },
 };
 
 export default function RootLayout({
