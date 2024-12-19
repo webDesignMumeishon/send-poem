@@ -77,18 +77,18 @@ export default function HomePage() {
 
 
 
-            <div className="mt-12 flex items-center justify-center gap-4">
-              <div className="flex -space-x-2">
-                {['/guy1.jpeg', '/guy2.jpeg', '/guy3.jpeg'].map((i) => (
-                  <Image
-                    key={i}
-                    src={`${i}`}
-                    alt=""
-                    width={48}
-                    height={48}
-                    className="w-10 h-10 rounded-full bg-red-200 border-2 border-white"
-                    priority
-                  />
+            <div className="mt-12 flex items-center justify-center gap-2">
+              <div className="flex -space-x-4">
+                {['/guy1.avif', '/guy2.jpeg', '/guy3.jpeg'].map((i) => (
+                  <div className="relative w-16 h-16" key={i}>
+                    <Image
+                      src={`${i}`}
+                      alt={`Happy customer ${i}`}
+                      fill
+                      className="rounded-full bg-red-200 border-2 border-white object-cover"
+                      priority
+                    />
+                  </div>
                 ))}
               </div>
               <p className="-mt-0.5 text-sm font-normal text-[#474368]"><span className="hidden md:inline-flex font-bold">20,983</span> <span className="hidden md:inline-flex"> envelops created for</span> <span className="font-bold">10,245+ </span>
