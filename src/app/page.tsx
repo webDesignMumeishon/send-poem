@@ -2,8 +2,6 @@
 import Image from "next/image"
 import Link from "next/link"
 import { Heart, CheckCircle, X } from 'lucide-react'
-import { Card, CardContent } from "@/components/ui/card"
-import { useState } from "react"
 
 const testimonials = [
   {
@@ -17,8 +15,6 @@ const testimonials = [
 ]
 
 export default function HomePage() {
-  const [activeTestimonial, setActiveTestimonial] = useState(0)
-
   return (
     <div className="min-h-screen bg-gradient-to-b from-pink-50 to-red-50">
       <header className="fixed top-0 w-full bg-white/80 backdrop-blur-sm z-50">
