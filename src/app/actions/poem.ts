@@ -43,7 +43,7 @@ export async function generateAiPoem(fields: PoemFields): Promise<{ poemDocument
         },
         {
             role: "user",
-            content: `Write a personalized poem for ${fields.name}, mentioning her brown eyes and how she fills my heart with joy.`
+            content: `Write a personalized poem for ${fields.name}`
         }
     ]
 
@@ -51,6 +51,30 @@ export async function generateAiPoem(fields: PoemFields): Promise<{ poemDocument
         const style: ChatCompletionMessageParam = {
             role: "user",
             content: `Write a poem in the "${fields.style}" style. The poem should reflect the characteristics of this style, adhering to its tone, vocabulary, and format. Ensure the poem is engaging and captures the essence of the chosen style.`
+        }
+        messagesConfigs.push(style)
+    }
+
+    if (fields.tone.length > 0) {
+        const style: ChatCompletionMessageParam = {
+            role: "user",
+            content: `Write a poem using the "${fields.tone}" tone.`
+        }
+        messagesConfigs.push(style)
+    }
+
+    if (fields.audience.length > 0) {
+        const style: ChatCompletionMessageParam = {
+            role: "user",
+            content: `Write a poem for this audience ${fields.audience}`
+        }
+        messagesConfigs.push(style)
+    }
+
+    if (fields.additional.length > 0) {
+        const style: ChatCompletionMessageParam = {
+            role: "user",
+            content: `Write a poem considering the additional information. ${fields.additional}`
         }
         messagesConfigs.push(style)
     }
