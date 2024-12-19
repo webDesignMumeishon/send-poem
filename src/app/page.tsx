@@ -181,7 +181,7 @@ export default function HomePage() {
 
 
       {/* Testimonials */}
-      <section id="testimonials" className="py-16">
+      {/* <section id="testimonials" className="py-16">
         <div className="container mx-auto px-4">
           <h2 className="text-3xl font-bold text-center text-brand-2 mb-12">
             Real Love Stories, Real Testimonials
@@ -202,6 +202,62 @@ export default function HomePage() {
                     }`}
                 />
               ))}
+            </div>
+          </div>
+        </div>
+      </section> */}
+
+
+      <section className="border-ypy-20 flex justify-center py-6">
+        <div className="container px-4">
+          <div className="mx-auto max-w-[800px] text-center">
+            <h2 className="text-3xl font-bold text-brand-2">Real Love Stories, Real Testimonials</h2>
+            <div className="mt-10 grid gap-8 sm:grid-cols-2">
+              <div className="space-y-4 rounded-lg border-brand-2 border p-6">
+                <div className="flex items-center justify-between">
+                  <div className="flex items-center space-x-4">
+                    <div className=" relative h-16 w-16 rounded-full bg-gray-100">
+                      <Image
+                        src={'/testimonial1.jpg'}
+                        alt={`Testimonial Sarah`}
+                        fill
+                        className="rounded-full bg-red-200 border-2 border-white object-cover"
+                        priority
+                      />
+                    </div>
+                    <div className="text-left">
+                      <div className="font-semibold">Sarah M.</div>
+                      {/* <div className="text-sm text-muted-foreground"></div> */}
+                    </div>
+                  </div>
+                  <div className="text-yellow-400">★★★★★</div>
+                </div>
+                <p className="text-sm text-brand-2">
+                  {testimonials[0].quote}
+                </p>
+              </div>
+              <div className="space-y-4 rounded-lg border-brand-2 border p-6">
+                <div className="flex items-center justify-between">
+                  <div className="flex items-center space-x-4">
+                    <div className="relative h-16 w-16 rounded-full bg-gray-100">
+                      <Image
+                        src={'/testimonial2.jpg'}
+                        alt={`Testimonial Sarah`}
+                        fill
+                        className="rounded-full bg-red-200 border-2 border-white object-cover"
+                        priority
+                      />
+                    </div>
+                    <div className="text-left">
+                      <div className="font-semibold">James K.</div>
+                    </div>
+                  </div>
+                  <div className="text-yellow-400">★★★★★</div>
+                </div>
+                <p className="text-sm text-brand-2">
+                  {testimonials[1].quote}
+                </p>
+              </div>
             </div>
           </div>
         </div>
