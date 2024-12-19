@@ -38,7 +38,7 @@ export default function HomePage() {
         </nav>
       </header>
 
-      <main className="relative pt-16 h-[80vh]">
+      <main className="relative pt-16 lg:h-[80vh]">
         <div className="absolute inset-0 z-0">
           <Image
             src="/girl-smiling-phone.jpg"
