@@ -38,14 +38,13 @@ export default function HomePage() {
         </nav>
       </header>
 
-      <main className="relative pt-16">
+      <main className="relative pt-16 h-[80vh]">
         <div className="absolute inset-0 z-0">
           <Image
             src="/girl-smiling-phone.jpg"
             alt="Background envelope"
-            width={1920}
-            height={1080}
-            className="object-cover w-full h-full opacity-20"
+            fill
+            className="object-cover w-fit h-full opacity-20"
             priority
           />
         </div>
